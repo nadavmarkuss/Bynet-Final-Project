@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "dockerq12121212/app"
+registry = "dockerq12121212/app:1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
