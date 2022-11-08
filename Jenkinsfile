@@ -11,7 +11,7 @@ stage('Building our image') {
 steps{
  dir("app") {
 script {
-dockerImage = docker.build registry + ":1"
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
  
 }
 }
