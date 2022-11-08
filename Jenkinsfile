@@ -3,7 +3,7 @@ pipeline {
 registry = "YourDockerhubAccount/YourRepository"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
-*/}
+}*/
 agent any
 stages {
 
