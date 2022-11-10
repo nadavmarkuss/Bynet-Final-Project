@@ -41,7 +41,7 @@ pipeline {
          
        
         }
-        stage('Deploy our image') {
+        stage('Deploy to dockerhub') {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -51,6 +51,13 @@ pipeline {
                 }
             }
         }
+	  stage("deploy to test"){
+		    steps{
+		    	sh'''
+			./deploy.sh
+			'''
+		         }
+	  }
         stage('Cleaning up') {
             steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
