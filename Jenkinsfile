@@ -53,6 +53,7 @@ pipeline {
         }
 	  stage("deploy to test"){
 		    steps{
+			sh "chmod +x ./deploy.sh"
 		    	sh'''
 			./deploy.sh
 			'''
