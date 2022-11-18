@@ -18,7 +18,7 @@ ec2-user@172.31.24.68:/home/ec2-user/
 
 docker-compose rm -f
 
-ssh  -i ~/.ssh/id_rsa ec2-user@MachineName << EOF
+ssh  -i ~/.ssh/id_rsa ec2-user@${MachineName} << EOF
   docker-compose -f docker-compose-prod.yaml down
   if [[ -n $(docker ps -a -q) ]]; then
     docker rm -f $(docker ps -a -q)
