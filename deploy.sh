@@ -9,16 +9,16 @@ fi
 MachineName=$1
 echo "deploying to ${MachineName} machine..."
 
-scp -i "id_rsa" /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
+scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
 ec2-user@172.31.24.68:/home/ec2-user/
 
-scp -i "id_rsa" /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
+scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
 ec2-user@prod/home/ec2-user/
 
 
 docker-compose rm -f
 
-ssh  -i "id_rsa" ec2-user@MachineName << EOF
+ssh  -i ~/.ssh/id_rsa ec2-user@MachineName << EOF
   docker-compose -f docker-compose-prod.yaml down
   if [[ -n $(docker ps -a -q) ]]; then
     docker rm -f $(docker ps -a -q)
