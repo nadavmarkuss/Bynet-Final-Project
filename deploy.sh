@@ -20,9 +20,6 @@ docker-compose rm -f
 
 ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@${MachineName} << EOF
   docker-compose -f docker-compose-prod.yaml down
-  if [[ -n $(docker ps -a -q) ]]; then
-    docker rm -f $(docker ps -a -q)
-  fi
   docker-compose -f docker-compose-prod.yaml up -d
   sleep 15
 EOF
