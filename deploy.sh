@@ -5,12 +5,11 @@ if [ "$#" -ne 1 ]; then
 	exit 1
 fi
 
-
 MachineName=$1
 echo "deploying to ${MachineName} machine..."
 
 scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
-ec2-user@172.31.24.68:/home/ec2-user/
+ec2-user@test:/home/ec2-user/
 
 #scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
 #ec2-user@prod:/home/ec2-user/
