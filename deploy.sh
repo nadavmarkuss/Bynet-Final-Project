@@ -1,10 +1,29 @@
 #!/bin/bash
+if [ "$#" -ne 1  ]
+  then
+    echo "Please insert only 1 argument" >&2
+    exit 1
+fi
+
+
+MachineName=$1
+echo "deploying to ${MachineName} machine..."
 
 scp -i "id_rsa" /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
 ec2-user@172.31.24.68:/home/ec2-user/
 
-ssh ec2-user@test docker-compose up
-ssh ec2-user@test docker compose down
-ssh ec2-user@test sleep 15
-ssh ec2-user@test docker rmi(name of image)
-ssh ec2-user@test system docker prune --volumes
+scp -i "id_rsa" /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
+ec2-user@prod/home/ec2-user/
+
+
+docker-compose rm -f
+
+ssh  -i "id_rsa" ec2-user@MachineName << EOF
+  docker-compose -f docker-compose-prod.yaml down
+  if [[ -n $(docker ps -a -q) ]]; then
+    docker rm -f $(docker ps -a -q)
+  fi
+  docker-compose -f docker-compose-prod.yaml up -d
+  sleep 15
+  EOF
+  
