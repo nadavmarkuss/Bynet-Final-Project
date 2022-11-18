@@ -59,6 +59,15 @@ pipeline {
 			'''
 		         }
 	  }
+	  stage("deploy to deploy"){
+		    steps{
+			sh "chmod +x ./deploy.sh"
+		    	sh'''
+			bash deploy.sh deploy
+			'''
+		         }
+	  }
+	  
         stage('Cleaning up') {
             steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
