@@ -6,5 +6,4 @@
 		               else
 				            echo "TEST: FAIL"
 				            exit 1
-		               fi
-                docker-compose down  
+		               fi  
