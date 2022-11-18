@@ -1,7 +1,8 @@
 #!/bin/bash
-if [ "$#" -ne 1  ]; then
-    echo "Please insert only 1 argument" >&2
-    exit 1
+
+if [ "$#" -ne 1 ]; then
+	echo "Please insert only 1 argument" >&2
+	exit 1
 fi
 
 
