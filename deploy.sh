@@ -25,8 +25,8 @@ EOF
   
 if [ $MachineName==test ]; then
   	scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/test.sh \
-	ec2-user@172.31.24.68:/home/ec2-user/
-	ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@test bash test.sh
+	ec2-user@test:/home/ec2-user/
+	ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@test bash -e test.sh
 fi	
   	
   	
