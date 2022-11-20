@@ -9,10 +9,10 @@ MachineName=$1
 echo "deploying to ${MachineName} machine..."
 
 scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
-ec2-user@test:/home/ec2-user/
+ec2-user@${MachineName}:/home/ec2-user/
 
-scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
-ec2-user@prod:/home/ec2-user/
+#scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
+#ec2-user@prod:/home/ec2-user/
 
 
 #docker-compose rm -f
