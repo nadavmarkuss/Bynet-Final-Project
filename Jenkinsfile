@@ -24,7 +24,7 @@ pipeline {
         stage('test') {
             steps{
                 sh '''
-                docker-compose -f docker-compose-prod.yaml up
+                docker-compose up -d
 		sleep 10
 		set -e
                 HTTP_STATUS=`curl -o /dev/null -s -w "%{http_code}\n" http://localhost:5000/` 
@@ -35,7 +35,7 @@ pipeline {
 				            echo "TEST: FAIL"
 				            exit 1
 		               fi
-                docker-compose -f docker-compose-prod.yaml down       
+                docker-compose down       
                 '''
          
          
