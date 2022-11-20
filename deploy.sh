@@ -11,16 +11,13 @@ echo "deploying to ${MachineName} machine..."
 scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
 ec2-user@${MachineName}:/home/ec2-user/
 
-#scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml \
-#ec2-user@prod:/home/ec2-user/
-
-
 #docker-compose rm -f
 
 ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@${MachineName} << EOF
   docker-compose -f docker-compose-prod.yaml down
   docker-compose -f docker-compose-prod.yaml up -d
   sleep 10
+  docker container ls -a
 EOF
   
 if [ $MachineName==test ]; then
