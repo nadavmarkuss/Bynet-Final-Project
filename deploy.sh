@@ -17,7 +17,6 @@ ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@${MachineName} << EOF
   docker-compose -f docker-compose-prod.yaml down
   docker-compose -f docker-compose-prod.yaml up -d
   sleep 10
-  docker container ls -a
 EOF
   
 if [ $MachineName==test ]; then
