@@ -15,7 +15,7 @@ scp -i ~/.ssh/id_rsa /var/lib/jenkins/workspace/Dev8200/docker-compose-prod.yaml
 ec2-user@prod:/home/ec2-user/
 
 
-docker-compose rm -f
+#docker-compose rm -f
 
 ssh  -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@${MachineName} << EOF
   docker-compose -f docker-compose-prod.yaml down
