@@ -61,11 +61,11 @@ pipeline {
 			'''
 		         }
 	  }
-	  stage("deploy to deploy"){
+	  stage("deploy to prod"){
 		    steps{
 			sh "chmod +x ./deploy.sh"
 		    	sh'''
-			bash deploy.sh deploy
+			bash deploy.sh prod
 			'''
 		         }
 	  }
