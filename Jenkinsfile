@@ -14,6 +14,7 @@ pipeline {
             steps{
                 dir("app") {
                     script {
+			echo "build has started"
                         dockerImagetag = docker.build registry + ":$BUILD_NUMBER"
                         dockerImageLatest = docker.build registry + ":latest"
                     }
@@ -45,7 +46,7 @@ pipeline {
         stage('Deploy to dockerhub') {
             steps{
                 script {
-                    docker.withRegistry( '', registryCredential ) {
+                   	docker.withRegistry( '', registryCredential ) {
                         dockerImagetag.push()
                         dockerImageLatest.push()
                     }
